@@ -1,6 +1,7 @@
 import React from "react";
-import { DisplayCardImage } from "../styles/components-styles";
-import { Pressable } from "react-native";
+import { useState } from "react";
+import { DisplayCardImage, ApiModalView, ApiPopupView, ApiPopupText } from "../styles/components-styles";
+import { Pressable, Modal, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useCredentialsContext } from "../context/user";
 import { useQuestionContext } from "../context/question";
@@ -12,6 +13,7 @@ import uuid from "react-native-uuid";
 
 // create card object in TarotPickScreen
 const Card = () => {
+  const [loading, setLoading] = useState(false); 
   const navigation = useNavigation();
   const cardImg = require("../assets/card.png");
   const createJournalUrl =
@@ -33,6 +35,7 @@ const Card = () => {
   const randomInt = (max) => Math.floor(Math.random() * (max + 1));
 
   const onPress = async () => {
+    setLoading(true);
     const cardId = randomInt(noOfCard);
     const uuidv4Num = uuid.v4();
     const journalId = String(uuidv4Num);
@@ -50,14 +53,23 @@ const Card = () => {
       }
     } catch (error) {
       console.log("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Pressable onPress={onPress}>
-      <DisplayCardImage source={cardImg} />
-    </Pressable>
-  );
-};
+    <><Modal transparent={true} animationType="fade" visible={loading}>
+      <ApiModalView>
+        <ApiPopupView>
+          <ActivityIndicator size="large" color="#000000" />
+          <ApiPopupText>Processing....</ApiPopupText>
+        </ApiPopupView>
+      </ApiModalView>
+    </Modal><Pressable onPress={onPress}>
+        <DisplayCardImage source={cardImg} />
+      </Pressable></>
+  )
+}
 
 export default Card;

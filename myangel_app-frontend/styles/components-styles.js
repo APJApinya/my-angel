@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SafeAreaView, ScrollView, ImageBackground, View, Text, Image, Switch, FlatList, TextInput, TouchableOpacity, Pressable, KeyboardAvoidingView } from 'react-native';
+import { SafeAreaView, ScrollView, ImageBackground, View, Text, Image, Switch, FlatList, TextInput, TouchableOpacity, Pressable, KeyboardAvoidingView, Modal, ActivityIndicator } from 'react-native';
 import Constants from 'expo-constants';
 
 //getting the height
@@ -7,14 +7,15 @@ const StatusBarHeight = Constants.statusBarHeight;
 
 //colors
 export const Colors = {
-    primary: "#004e89",
-    secondary: "#faf8d4",
-    tertiary: "#000000",
-    darkLight: "#9CA3AF",
-    brand: "#b07bac",
+    primary: "#004e89", // blue
+    secondary: "#faf8d4", // light yellow
+    tertiary: "#000000", // black
+    darkLight: "#9CA3AF", // light grey
+    brand: "#b07bac", // purple
+    transparent: "rgba(0, 0, 0, 0.5)",
 };
 
-const { primary, secondary, tertiary, darkLight, brand } = Colors;
+const { primary, secondary, tertiary, darkLight, brand, transparent, white } = Colors;
 
 
 export const StyledContainer = styled.SafeAreaView`
@@ -372,4 +373,24 @@ export const StyledScrollView = styled.ScrollView`
     flex: 1;
     width: 100%;
     height: 100%;
+`;
+
+export const ApiModalView = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: ${transparent};
+`;
+export const ApiPopupView = styled.View`
+    width: 200;
+    height: 100;
+    background-color: ${secondary};
+    justify-content: center;
+    align-item: center;
+`;
+export const ApiPopupText = styled.Text`
+    margin-top: 10;
+    color: ${brand};
+    font-size: 22;
+    font-weight: bold;
 `;
