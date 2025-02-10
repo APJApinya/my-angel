@@ -73,7 +73,7 @@ export const PageLogo = styled.Image`
 `;
 
 export const PageTitle = styled.Text`
-    font-size: ${({ isLargeText }) => (isLargeText ? '40px' : '35px')};
+    font-size: 35px;
     text-align: center;
     font-weight: bold;
     color: ${secondary};
@@ -83,7 +83,7 @@ export const PageTitle = styled.Text`
 `;
 
 export const SubTitle = styled.Text`
-    font-size: ${({ isLargeText }) => (isLargeText ? '23px' : '18px')};
+    font-size: 18px;
     text-align: center;
     margin-bottom: 20px;
     letter-spacing: 1px;
@@ -101,7 +101,7 @@ export const StyledTextInput = styled.TextInput`
     padding-left: 55px;
     padding-right: 55px;
     border-radius: 5px;
-    font-size: ${({ isLargeText }) => (isLargeText ? '21px' : '16px')};
+    font-size: 16px;
     height: 50px;
     margin-vertical: 3px;
     margin-bottom: 10px;
@@ -110,14 +110,14 @@ export const StyledTextInput = styled.TextInput`
 
 export const MsgBox = styled.Text`
     text-align: center;
-    font-size: ${({ isLargeText }) => (isLargeText ? '18px' : '13px')};
+    font-size: 13px;
     color: ${secondary}
 `;
 
 
 export const StyledInputLabel = styled.Text`
     color: ${darkLight};
-    font-size: ${({ isLargeText }) => (isLargeText ? '20px' : '15px')};
+    font-size: 15px;
     text-align: left;
 `;
 
@@ -173,7 +173,7 @@ export const StyledLogoutButton = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
     color: ${primary};
-    font-size: ${({ isLargeText }) => (isLargeText ? '23px' : '18px')};
+    font-size: 18px;
 `;
 
 
@@ -195,7 +195,7 @@ export const ExtraText = styled.Text`
     justify-content: center;
     align-content: center;
     color: ${tertiary};
-    font-size: ${({ isLargeText }) => (isLargeText ? '21px' : '16px')};
+    font-size: 16px;
 `;
 
 export const TextLink = styled.TouchableOpacity`
@@ -205,7 +205,7 @@ export const TextLink = styled.TouchableOpacity`
 
 export const TextLinkContent = styled.Text`
     color: ${darkLight};
-    font-size: ${({ isLargeText }) => (isLargeText ? '21px' : '16px')};
+    font-size: 16px;
 `;
 
 //for home menu --> user to select journal or tarot reading
@@ -251,7 +251,7 @@ export const LinkButtonContainer = styled.View`
 export const LinkButtonLabel = styled.Text`
     color: ${secondary};
     fontFamily: 'Playfair';
-    font-size: ${({ isLargeText }) => (isLargeText ? '28px' : '23px')};
+    font-size: 23px;
 `;
 
 
@@ -277,7 +277,7 @@ export const DailyFlatListItem = styled.Pressable`
 `;
 
 export const DailyFlatListTitle = styled.Text`
-    font-size: ${({ isLargeText }) => (isLargeText ? '25px' : '20px')};
+    font-size: 20px;
     fontFamily: 'Playfair';
     color: ${primary};
 `;
@@ -338,7 +338,7 @@ export const StyledResultTextView = styled.View`
 `;
 
 export const StyledResultText = styled.Text`
-    font-size: ${({ isLargeText }) => (isLargeText ? '23px' : '18px')};
+    font-size: 18px;
     color : ${secondary};
 `;
 

@@ -9,6 +9,7 @@ import {
   DailyFlatListItem,
   DailyFlatListTitle,
   StyledButtonContainer,
+  ExtraText,TextLinkContent,
 } from "../styles/components-styles";
 import { Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -27,11 +28,11 @@ export default function JournalsScreen() {
   const { storedCredentials } = useCredentialsContext();
   const { setCard } = useCardContext();
   const navigation = useNavigation();
-  
+
   // const user_name = storedCredentials.decodedName;
-//   const user_email = storedCredentials.decodedEmail;
-  const userHashedId = storedCredentials.hashedUserId; // partition key
-  // pass partition key as parameters 
+  //   const user_email = storedCredentials.decodedEmail;
+  const userHashedId = storedCredentials?.hashedUserId || null; // partition key
+  // pass partition key as parameters
   const getJournalsUrl = `https://w7ady0n0oe.execute-api.ap-southeast-2.amazonaws.com/list?user=${userHashedId}`;
 
   // Fetch data from API
@@ -41,7 +42,10 @@ export default function JournalsScreen() {
 
       const data = response.data;
       // Handle cases where API might return body as a stringified JSON (body is string)
-      const parsedJournals = typeof data.body === "string" ? JSON.parse(data.body).journals : data.journals;
+      const parsedJournals =
+        typeof data.body === "string"
+          ? JSON.parse(data.body).journals
+          : data.journals;
 
       setData(parsedJournals);
     } catch (error) {
@@ -51,7 +55,7 @@ export default function JournalsScreen() {
 
   useFocusEffect(
     useCallback(() => {
-    // Do something when the screen is focused. the data will be re-fetched every time the user navigates back to this screen
+      // Do something when the screen is focused. the data will be re-fetched every time the user navigates back to this screen
       fetchData();
     }, [storedCredentials])
   );
@@ -63,9 +67,7 @@ export default function JournalsScreen() {
 
   const renderItem = ({ item }) => (
     <DailyFlatListItem onPress={() => handleSeeResultPress(item.card_id)}>
-      <DailyFlatListTitle>
-        {item.question}
-      </DailyFlatListTitle>
+      <DailyFlatListTitle>{item.question}</DailyFlatListTitle>
       <StyledButtonContainer>
         {/* <DailyFlatButton onPress={() => handleDeletePress(item.)}>
           <Ionicons name={"trash-outline"} size={30} color={primary} />
@@ -79,14 +81,18 @@ export default function JournalsScreen() {
       <StyledImageBackground source={require("../assets/bg-login.png")} />
       <JournalsContainer>
         <PageTitle>Your angel records</PageTitle>
-        <MsgBox>
-          view the detail by clicking on the box
-        </MsgBox>
-        <DailyFlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
+        {storedCredentials ? (
+          <>
+            <MsgBox>view the detail by clicking on the box</MsgBox>
+            <DailyFlatList
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+            />
+          </>
+        ) : (
+          <TextLinkContent> Please log in first to see your records</TextLinkContent>
+        )}
       </JournalsContainer>
     </StyledContainer>
   );

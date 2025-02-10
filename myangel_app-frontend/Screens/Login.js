@@ -262,7 +262,8 @@ export default function Login() {
           )}
         </Formik>
       </InnerContainer>
-
+      
+      {/* show the popup if showVerificationPopup = true */}
       {showVerificationPopup && (
         <Modal
           animationType="slide"
