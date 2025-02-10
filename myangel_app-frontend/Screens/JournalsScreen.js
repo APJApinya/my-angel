@@ -34,7 +34,7 @@ export default function JournalsScreen() {
 //   const user_email = storedCredentials.decodedEmail;
   const userHashedId = storedCredentials.hashedUserId; // partition key
   // pass partition key as parameters 
-  const getJournalsUrl = `https://w7ady0n0oe.execute-api.ap-southeast-2.amazonaws.com/get?user=${userHashedId}`;
+  const getJournalsUrl = `https://w7ady0n0oe.execute-api.ap-southeast-2.amazonaws.com/list?user=${userHashedId}`;
 
   // Fetch data from API
   const fetchData = async () => {
@@ -44,7 +44,7 @@ export default function JournalsScreen() {
       const data = response.data;
       // Handle cases where API might return body as a stringified JSON (body is string)
       const parsedJournals = typeof data.body === "string" ? JSON.parse(data.body).journals : data.journals;
-      
+
       setData(parsedJournals);
     } catch (error) {
       console.log("Error fetching data: ", error);
