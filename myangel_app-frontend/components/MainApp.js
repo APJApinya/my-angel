@@ -65,17 +65,31 @@ export default function MainApp() {
     const isLoggedIn = storedCredentials !== null;
 
     useEffect(() => {
-        const prepare = async () => {
-            await SplashScreen.preventAutoHideAsync();
-
-            setTimeout(SplashScreen.hideAsync, 2000);
-        };
+        async function prepare() {
+            try {
+              // Prevent the splash screen from auto-hiding
+              await SplashScreen.preventAutoHideAsync();
+              // Simulate loading process
+              await new Promise(resolve => setTimeout(resolve, 2000));
+            } catch (e) {
+              console.warn(e);
+            } finally {
+              await SplashScreen.hideAsync();
+            }
+          }
         prepare();
     }, []);
 
     const [fontsLoaded, fontError] = useFonts({
         'Playfair': require('../assets/fonts/PlayfairDisplay-Regular.ttf'),
     });
+
+    useEffect(() => {
+        if (fontsLoaded || fontError) {
+            SplashScreen.hideAsync(); // Hide splash only when fonts are loaded
+        }
+    }, [fontsLoaded, fontError]);
+    
 
     if (!fontsLoaded && !fontError) {
         return null;
