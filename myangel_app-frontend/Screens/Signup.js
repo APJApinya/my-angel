@@ -19,7 +19,6 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { Formik } from "formik";
 import { Colors } from "../styles/components-styles";
-import { useTheme } from "../context/theme";
 import { useNavigation } from "@react-navigation/native";
 import { MyTextInput } from "../components/ui/form";
 import { CognitoUserPool, CognitoUser } from "amazon-cognito-identity-js";
@@ -35,7 +34,6 @@ const poolData = {
 const userPool = new CognitoUserPool(poolData);
 
 export default function Signup() {
-  const { isLargeText } = useTheme();
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [showVerificationPopup, setShowVerificationPopup] = useState(false);
@@ -104,7 +102,7 @@ export default function Signup() {
       <StatusBar />
       <StyledImageBackground source={require("../assets/bg-signup.png")} />
       <InnerContainer>
-        <PageTitle isLargeText={isLargeText}>Account Sign Up</PageTitle>
+        <PageTitle>Account Sign Up</PageTitle>
 
         <Formik
           initialValues={{
@@ -179,16 +177,15 @@ export default function Signup() {
               <MsgBox>{message}</MsgBox>
               <Line />
               <StyledButton onPress={handleSubmit}>
-                <ButtonText isLargeText={isLargeText}>Sign up</ButtonText>
+                <ButtonText>Sign up</ButtonText>
               </StyledButton>
               <ExtraView>
-                <ExtraText isLargeText={isLargeText}>
+                <ExtraText>
                   Already have an account?
                 </ExtraText>
                 <TextLink>
                   <TextLinkContent
                     onPress={handleLogin}
-                    isLargeText={isLargeText}
                   >
                     Log in
                   </TextLinkContent>

@@ -19,7 +19,6 @@ import {
 } from "../styles/components-styles";
 import { Formik } from "formik";
 import { Colors } from "../styles/components-styles";
-import { useTheme } from "../context/theme";
 import { useNavigation } from "@react-navigation/native";
 import { MyTextInput } from "../components/ui/form";
 // Read information from idToken and Accesstoken
@@ -48,7 +47,6 @@ const userPool = new CognitoUserPool(poolData);
 const { brand, darkLight } = Colors;
 
 export default function Login() {
-  const { isLargeText } = useTheme();
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [showVerificationPopup, setShowVerificationPopup] = useState(false);
@@ -201,7 +199,7 @@ export default function Login() {
     <StyledContainer>
       <StyledImageBackground source={require("../assets/bg-login.png")} />
       <InnerContainer>
-        <PageTitle isLargeText={isLargeText}>Account Log in</PageTitle>
+        <PageTitle>Account Log in</PageTitle>
 
         <Formik
           initialValues={{ email: "", password: "" }}
@@ -240,11 +238,11 @@ export default function Login() {
               <MsgBox>{message}</MsgBox>
               <Line />
               <StyledButton onPress={handleSubmit}>
-                <ButtonText isLargeText={isLargeText}>Log in</ButtonText>
+                <ButtonText>Log in</ButtonText>
               </StyledButton>
 
               <ExtraView>
-                <ExtraText isLargeText={isLargeText}>
+                <ExtraText>
                   Don't have an account already?
                 </ExtraText>
                 <TextLink onPress={handleRegister}>
@@ -253,7 +251,7 @@ export default function Login() {
               </ExtraView>
 
               <ExtraView>
-                <ExtraText isLargeText={isLargeText}>
+                <ExtraText>
                   Forget password?
                 </ExtraText>
                 <TextLink onPress={() => handleForgetPassword(values.email)}>

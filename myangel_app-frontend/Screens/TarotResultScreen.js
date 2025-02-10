@@ -5,7 +5,6 @@ import {
     StyledResultButtonContainer, JournalsContainer
 } from "../styles/components-styles"
 import { Text} from "react-native";
-import { useTheme } from '../context/theme';
 import { useCardContext } from '../context/card';
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios';
@@ -13,7 +12,6 @@ import axios from 'axios';
 export default function TarotResultScreen() {
     const [cardData, setCardData] = useState();
     const { card } = useCardContext();
-    const { isLargeText } = useTheme();
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -46,21 +44,21 @@ export default function TarotResultScreen() {
                 source={require("../assets/bg-signup.png")} />
             <JournalsContainer>
                 <StyledResultContainerView>
-                    <PageTitle isLargeText={isLargeText}>Your Angel said...</PageTitle>
+                    <PageTitle>Your Angel said...</PageTitle>
                     
                     {cardData && (
                         <>
                             <StyledResultImage source={{uri: cardData.card_image_url}} />
-                            <SubTitle isLargeText={isLargeText}>{cardData.card_name}</SubTitle>
+                            <SubTitle>{cardData.card_name}</SubTitle>
                             <StyledResultTextView>
-                                <StyledResultText isLargeText={isLargeText}>{cardData.card_description}</StyledResultText>
+                                <StyledResultText>{cardData.card_description}</StyledResultText>
                             </StyledResultTextView>
                             <StyledResultButtonContainer>
                                 <StyledResultButtonA onPress={handleBackToJournal}>
-                                    <Text isLargeText={isLargeText}>Back to Journal</Text>
+                                    <Text>Back to Journal</Text>
                                 </StyledResultButtonA>
                                 <StyledResultButtonB onPress={handleBackToHome}>
-                                    <Text isLargeText={isLargeText}>Back to Home</Text>
+                                    <Text>Back to Home</Text>
                                 </StyledResultButtonB>
                             </StyledResultButtonContainer>
                         </>

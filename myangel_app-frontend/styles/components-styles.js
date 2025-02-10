@@ -382,15 +382,15 @@ export const ApiModalView = styled.View`
     background-color: ${transparent};
 `;
 export const ApiPopupView = styled.View`
-    width: 200;
-    height: 100;
+    width: 200px;
+    height: 100px;
     background-color: ${secondary};
     justify-content: center;
     align-item: center;
 `;
 export const ApiPopupText = styled.Text`
-    margin-top: 10;
+    margin-top: 10px;
     color: ${brand};
-    font-size: 22;
+    font-size: 22px;
     font-weight: bold;
 `;

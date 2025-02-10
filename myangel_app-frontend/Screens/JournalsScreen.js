@@ -14,7 +14,6 @@ import { Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "../styles/components-styles";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
-import { useTheme } from "../context/theme";
 import { useCredentialsContext } from "../context/user";
 import { useCardContext } from "../context/card";
 import { useIsEditContext } from "../context/isEdit";
@@ -25,7 +24,6 @@ const { brand, secondary, primary } = Colors;
 
 export default function JournalsScreen() {
   const [data, setData] = useState([]);
-  const { isLargeText } = useTheme();
   const { storedCredentials } = useCredentialsContext();
   const { setCard } = useCardContext();
   const navigation = useNavigation();
@@ -65,7 +63,7 @@ export default function JournalsScreen() {
 
   const renderItem = ({ item }) => (
     <DailyFlatListItem onPress={() => handleSeeResultPress(item.card_id)}>
-      <DailyFlatListTitle isLargeText={isLargeText}>
+      <DailyFlatListTitle>
         {item.question}
       </DailyFlatListTitle>
       <StyledButtonContainer>
@@ -80,8 +78,8 @@ export default function JournalsScreen() {
     <StyledContainer>
       <StyledImageBackground source={require("../assets/bg-login.png")} />
       <JournalsContainer>
-        <PageTitle isLargeText={isLargeText}>Your angel records</PageTitle>
-        <MsgBox isLargeText={isLargeText}>
+        <PageTitle>Your angel records</PageTitle>
+        <MsgBox>
           view the detail by clicking on the box
         </MsgBox>
         <DailyFlatList

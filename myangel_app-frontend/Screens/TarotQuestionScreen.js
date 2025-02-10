@@ -14,7 +14,6 @@ import { StatusBar } from "expo-status-bar";
 import { Colors } from "../styles/components-styles";
 import { Formik } from "formik";
 import { useNavigation } from "@react-navigation/native";
-import { useTheme } from "../context/theme";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useQuestionContext } from "../context/question";
 import { MyTextInput } from "../components/ui/form";
@@ -23,7 +22,6 @@ const { darkLight } = Colors;
 
 
 export default function TarotQuestionScreen() {
-  const { isLargeText } = useTheme();
   const { setQuestion } = useQuestionContext();
   const navigation = useNavigation();
   const [message, setMessage] = useState();
@@ -34,7 +32,7 @@ export default function TarotQuestionScreen() {
       <StyledImageBackground source={require("../assets/home.png")} />
       <KeyboardAwareScrollView>
         <QuestionContainer>
-          <PageTitle isLargeText={isLargeText}>
+          <PageTitle>
             Question for your Angel
           </PageTitle>
 
@@ -64,7 +62,7 @@ export default function TarotQuestionScreen() {
                 <MsgBox>{message}</MsgBox>
                 <Line />
                 <StyledButton onPress={handleSubmit}>
-                  <ButtonText isLargeText={isLargeText}>
+                  <ButtonText>
                     Reach to your angel
                   </ButtonText>
                 </StyledButton>

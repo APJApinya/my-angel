@@ -4,7 +4,7 @@ import { Octicons, Ionicons } from "@expo/vector-icons";
 import { StyledInputLabel, StyledTextInput, Colors, LeftIcon, RightIcon } from "../../styles/components-styles";
 const { brand, darkLight } = Colors;
 
-export const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, isLargeText, ...props }) => {
+export const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, ...props }) => {
     return (
         <View>
              {/* Left-side icon */}
@@ -13,7 +13,7 @@ export const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePass
             </LeftIcon>
 
             {/* Label for the input */}
-            <StyledInputLabel isLargeText={isLargeText}>{label}</StyledInputLabel>
+            <StyledInputLabel>{label}</StyledInputLabel>
             
             {/* The actual input field */}
             <StyledTextInput {...props} />
