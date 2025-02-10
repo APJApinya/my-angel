@@ -8,8 +8,10 @@ import {
   DailyFlatList,
   DailyFlatListItem,
   DailyFlatListTitle,
+  DailyFlatButton,
   StyledButtonContainer,
-  ExtraText,TextLinkContent,
+  ExtraText,
+  TextLinkContent,
 } from "../styles/components-styles";
 import { Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -18,7 +20,6 @@ import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { useCredentialsContext } from "../context/user";
 import { useCardContext } from "../context/card";
 import { useIsEditContext } from "../context/isEdit";
-import { useQuestionIdContext } from "../context/questionId";
 import axios from "axios";
 
 const { brand, secondary, primary } = Colors;
@@ -30,9 +31,7 @@ export default function JournalsScreen() {
   const navigation = useNavigation();
 
   // const user_name = storedCredentials.decodedName;
-  //   const user_email = storedCredentials.decodedEmail;
   const userHashedId = storedCredentials?.hashedUserId || null; // partition key
-  // pass partition key as parameters
   const getJournalsUrl = `https://w7ady0n0oe.execute-api.ap-southeast-2.amazonaws.com/list?user=${userHashedId}`;
 
   // Fetch data from API
@@ -65,13 +64,43 @@ export default function JournalsScreen() {
     navigation.navigate("Result");
   };
 
+  const handleDeletePress = (id) => {
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this journal entry?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          onPress: async () => {
+            try {
+              const deleteJournalsUrl = `https://w7ady0n0oe.execute-api.ap-southeast-2.amazonaws.com/delete?user=${userHashedId}&id=${id}`;
+              response = await axios.delete(deleteJournalsUrl);
+
+              if (response.status === 200) {
+                Alert.alert("Success, Journal entry deleted successfully");
+                fetchData();
+              }
+            } catch (error) {
+              console.error("Error: ", error);
+            }
+          },
+          style: "destructive",
+        },
+      ]
+    );
+  };
+
   const renderItem = ({ item }) => (
     <DailyFlatListItem onPress={() => handleSeeResultPress(item.card_id)}>
       <DailyFlatListTitle>{item.question}</DailyFlatListTitle>
       <StyledButtonContainer>
-        {/* <DailyFlatButton onPress={() => handleDeletePress(item.)}>
+        <DailyFlatButton onPress={() => handleDeletePress(item.id)}>
           <Ionicons name={"trash-outline"} size={30} color={primary} />
-        </DailyFlatButton> */}
+        </DailyFlatButton>
       </StyledButtonContainer>
     </DailyFlatListItem>
   );
@@ -91,7 +120,10 @@ export default function JournalsScreen() {
             />
           </>
         ) : (
-          <TextLinkContent> Please log in first to see your records</TextLinkContent>
+          <TextLinkContent>
+            {" "}
+            Please log in first to see your records
+          </TextLinkContent>
         )}
       </JournalsContainer>
     </StyledContainer>

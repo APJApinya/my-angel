@@ -33,7 +33,6 @@ function TarotStackNavigator() {
             <TarotStack.Screen name="AskQuestion" component={TarotQuestionScreen} options={{ headerShown: false }}/>
             <TarotStack.Screen name="TarotPick" component={TarotPickScreen} options={{ headerShown: false }}/>
             <TarotStack.Screen name="Result" component={TarotResultScreen} options={{ headerShown: false }}/>
-            <TarotStack.Screen name="Journals" component={JournalsScreen} options={{ headerShown: false }}/>
         </TarotStack.Navigator>
     );
 }

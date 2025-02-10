@@ -31,7 +31,8 @@ import {
   CognitoUser,
   AuthenticationDetails,
 } from "amazon-cognito-identity-js";
-
+// Import secrets from .env
+import { USER_POOL_ID, CLIENT_ID } from "@env";
 // keeping and calling user login data
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCredentialsContext } from "../context/user";
@@ -39,8 +40,8 @@ import { useCredentialsContext } from "../context/user";
 // initialize AWS cognito
 // TODO: using secret manager
 const poolData = {
-  UserPoolId: "ap-southeast-2_0hjfEuOPn",
-  ClientId: "7kff2ir73ppq5ttsjigk9vof4f",
+  UserPoolId: USER_POOL_ID,
+  ClientId: CLIENT_ID,
 };
 const userPool = new CognitoUserPool(poolData);
 
@@ -262,7 +263,7 @@ export default function Login() {
           )}
         </Formik>
       </InnerContainer>
-      
+
       {/* show the popup if showVerificationPopup = true */}
       {showVerificationPopup && (
         <Modal

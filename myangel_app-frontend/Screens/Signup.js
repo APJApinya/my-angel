@@ -24,14 +24,17 @@ import { MyTextInput } from "../components/ui/form";
 import { CognitoUserPool, CognitoUser } from "amazon-cognito-identity-js";
 const { darkLight } = Colors;
 import { View, Modal } from "react-native";
+import { USER_POOL_ID, CLIENT_ID } from "@env";
 
 // initialize AWS cognito
 // TODO: using secret manager
 const poolData = {
-  UserPoolId: "ap-southeast-2_0hjfEuOPn",
-  ClientId: "7kff2ir73ppq5ttsjigk9vof4f",
+  UserPoolId: USER_POOL_ID,
+  ClientId: CLIENT_ID,
 };
 const userPool = new CognitoUserPool(poolData);
+
+// Function to fetch secrets from AWS SSM
 
 export default function Signup() {
   const [hidePassword, setHidePassword] = useState(true);

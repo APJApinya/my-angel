@@ -7,7 +7,6 @@ import { useCredentialsContext } from "../context/user";
 import { useQuestionContext } from "../context/question";
 import { useCardContext } from "../context/card";
 import { useIsEditContext } from "../context/isEdit";
-import { useQuestionIdContext } from "../context/questionId";
 import axios from "axios";
 import uuid from "react-native-uuid";
 
