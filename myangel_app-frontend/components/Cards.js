@@ -8,10 +8,10 @@ import { useCardContext } from "../context/card";
 import { useIsEditContext } from "../context/isEdit";
 import { useQuestionIdContext } from "../context/questionId";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "react-native-uuid";
 
 // create card object in TarotPickScreen
-export default function Card() {
+const Card = () => {
   const navigation = useNavigation();
   const cardImg = require("../assets/card.png");
   const createJournalUrl =
@@ -26,27 +26,17 @@ export default function Card() {
   //   const { isEdit, setIsEdit } = useIsEditContext();
   //   const { questionId } = useQuestionIdContext();
 
-  // const user_name = storedCredentials.decodedName;
-  // const user_email = storedCredentials.decodedEmail;
-  const userHashedId = storedCredentials.userHashedId; //partition key
+  const userHashedId = storedCredentials.hashedUserId; //partition key
+
   // generate the ramdomize algorithm
   const noOfCard = 21;
   const randomInt = (max) => Math.floor(Math.random() * (max + 1));
 
   const onPress = async () => {
     const cardId = randomInt(noOfCard);
-    const uuidv4Num = uuidv4()
-    const journalId = String(uuidv4Num) // sort key + make sure that this pass as string
-
+    const uuidv4Num = uuid.v4();
+    const journalId = String(uuidv4Num);
     try {
-      console.log("Sending request to:", createJournalUrl);
-      console.log("Payload:", {
-        user: userHashedId,
-        id: journalId,
-        question,
-        card_id: cardId,
-      });
-
       const response = await axios.post(createJournalUrl, {
         user: userHashedId,
         id: journalId,
@@ -54,20 +44,20 @@ export default function Card() {
         card_id: cardId,
       });
 
-      console.log("Response Status:", response.status);
-      console.log("Response Data:", response.data);
-
       if (response.status === 201) {
         setCard(cardId);
         navigation.navigate("Result");
       }
     } catch (error) {
-      console.log("Error in API request:", error);
+      console.log("Error:", error);
     }
   };
+
   return (
-    <Pressable onPress={onPress} hitSlop={20}>
+    <Pressable onPress={onPress}>
       <DisplayCardImage source={cardImg} />
     </Pressable>
   );
-}
+};
+
+export default Card;

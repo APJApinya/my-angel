@@ -1,10 +1,8 @@
 import React from 'react';
 import { CardPickContainer, PageTitle, StyledImageBackground, StyledContainer, InnerCardContainer } from "../styles/components-styles"
 import Card from "../components/Cards";
-import { View, Button } from 'react-native';
 
 export default function TarotPickScreen() {
-
     return (
         <StyledContainer>
             <StyledImageBackground
@@ -19,5 +17,5 @@ export default function TarotPickScreen() {
             </InnerCardContainer>
             </CardPickContainer>
         </StyledContainer>
-    );
+    )
 }

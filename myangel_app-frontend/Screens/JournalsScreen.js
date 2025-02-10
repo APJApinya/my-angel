@@ -32,7 +32,7 @@ export default function JournalsScreen() {
   
   // const user_name = storedCredentials.decodedName;
 //   const user_email = storedCredentials.decodedEmail;
-  const userHashedId = storedCredentials.userHashedId; // partition key
+  const userHashedId = storedCredentials.hashedUserId; // partition key
   // pass partition key as parameters 
   const getJournalsUrl = `https://w7ady0n0oe.execute-api.ap-southeast-2.amazonaws.com/get?user=${userHashedId}`;
 

@@ -62,6 +62,7 @@ export const InnerCardContainer = styled.View`
     width: 100%;
     align-items: center;
     padding: 10px;
+    flex-wrap: wrap;
 
 `;
 
