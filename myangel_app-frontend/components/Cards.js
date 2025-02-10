@@ -61,11 +61,12 @@ const Card = () => {
     <><Modal transparent={true} animationType="fade" visible={loading}>
       <ApiModalView>
         <ApiPopupView>
-          <ActivityIndicator size="large" color="#000000" />
+          <ActivityIndicator size="large" color="#b07bac" />
           <ApiPopupText>Processing....</ApiPopupText>
         </ApiPopupView>
       </ApiModalView>
-    </Modal><Pressable onPress={onPress}>
+    </Modal>
+    <Pressable onPress={onPress}>
         <DisplayCardImage source={cardImg} />
       </Pressable></>
   )
