@@ -22,14 +22,14 @@ This project demonstrates **full-stack mobile development**, showcasing:
 - **AWS Lambda** - Serverless backend functions.
 - **AWS API Gateway** - Secure REST API for app communication.
 
-## 🔥 Features
+## Features
 - **User Authentication:** Secure sign-up, login, and session management via AWS Cognito.
 - **Journal Entries:** Users can add and delete personal questions journal entries.  
 - **Cloud Storage:** Journal entries are stored in **AWS DynamoDB** and retrieved dynamically.  
 - **Serverless Architecture:** Uses **AWS Lambda** for efficient backend operations.  
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 ![AWS Architecture Diagram](./my-angel_aws-architecture.png)
 
 The application follows a **serverless architecture**:
