@@ -1,4 +1,4 @@
-# My Angel - Mobile Application with AWS integration
+# 👼🏼 My Angel - Mobile Application with AWS integration
 
 ## Overview
 Daily Angel is a **React Native mobile application** built with **Expo** that helps users getting the answer of the questions they have in mind by using Tarot Card. The app leverages **AWS services** for user authentication, data storage, and secure API calls.
@@ -10,12 +10,12 @@ This project demonstrates **full-stack mobile development**, showcasing:
 ---
 
 ## Tech Stack & AWS Services Used
-### **Frontend:**
+### 📱**Frontend:**
 - **React Native (Expo)** - Mobile app framework.
 - **Styled Components** - Custom UI styling.
 - **React Navigation** - Smooth user navigation.
 
-### **Backend (AWS Services):**
+### ☁️**Backend (AWS Services):**
 - **AWS Cognito** - Secure user authentication.
 - **AWS S3** - Storing images and assets.
 - **AWS DynamoDB** - NoSQL database for journal entries.
@@ -45,14 +45,14 @@ The application follows a **serverless architecture**:
 
 ---
 
-## Challenges and  Learnings
+## 🏋️Challenges and  Learnings
 - **Serverless Development**: Efficient use of AWS Lambda and API Gateway as backend for cost optimization.
 - **React Native Best Practices**: Optimized navigation, state management, and styling for cross-platform app development.
 - **Security**: Using AWS Cognito for authentication.
 
 ---
 
-## Future Improvements
+## 🤸Future Improvements
 - **Deploying a Full Stack App**: Waiting for approval for Apple's developer program,
 - **Machine Learning**: Applying for question recognization aims for accurate and customized card result to users.
 
